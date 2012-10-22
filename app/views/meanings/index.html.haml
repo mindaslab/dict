@@ -1,0 +1,21 @@
+%h1 Listing meanings
+
+%table
+  %tr
+    %th Content
+    %th Word
+    %th
+    %th
+    %th
+
+  - @meanings.each do |meaning|
+    %tr
+      %td= meaning.content
+      %td= meaning.word
+      %td= link_to 'Show', meaning
+      %td= link_to 'Edit', edit_meaning_path(meaning)
+      %td= link_to 'Destroy', meaning, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Meaning', new_meaning_path
