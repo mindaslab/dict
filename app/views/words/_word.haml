@@ -1,0 +1,4 @@
+%p.word
+	=link_to word.content, word
+	=link_to "Edit", edit_word_path(word)
+	=link_to "Delete", word, method: :delete, data: { confirm: 'Are you sure?' }

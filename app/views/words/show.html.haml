@@ -1,9 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Content:
-  = @word.content
+.word
+	%h1= @word.content
+	.word_action
+		= link_to 'Edit', edit_word_path(@word), class: "btn btn-warning"
+		= link_to 'Delete', @word, method: :delete, confirm: "Do you want to delete #{@word.content}", class: "btn btn-danger"
+		=link_to("New Meaning", {action: :new, controller: :meanings, word_id: @word.id}, class: "btn btn-success")
 
-= link_to 'Edit', edit_word_path(@word)
-\|
-= link_to 'Back', words_path
+%hr
+
+=render @word.meanings

@@ -1,6 +1,9 @@
 class WordsController < ApplicationController
   # GET /words
   # GET /words.json
+  
+  layout 'home'
+  
   def index
     @words = Word.all
 

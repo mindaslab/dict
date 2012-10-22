@@ -1,3 +1,5 @@
+%h1= "Meaning of #{@word.content}"
+
 = form_for @meaning do |f|
   - if @meaning.errors.any?
     #error_explanation
@@ -9,8 +11,7 @@
   .field
     = f.label :content
     = f.text_area :content
-  .field
-    = f.label :word
-    = f.text_field :word
+ 
+    = hidden_field_tag "meaning[word_id]", @word.id
   .actions
     = f.submit 'Save'

@@ -1,18 +1,6 @@
 %h1 Listing words
 
-%table
-  %tr
-    %th Content
-    %th
-    %th
-    %th
-
-  - @words.each do |word|
-    %tr
-      %td= word.content
-      %td= link_to 'Show', word
-      %td= link_to 'Edit', edit_word_path(word)
-      %td= link_to 'Destroy', word, method: :delete, data: { confirm: 'Are you sure?' }
+=render @words
 
 %br
 
