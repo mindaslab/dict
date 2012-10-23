@@ -1,4 +1,6 @@
 Dict::Application.routes.draw do
+  devise_for :users
+
   resources :meanings
 
   resources :words
