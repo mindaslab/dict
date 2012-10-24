@@ -1,4 +1,4 @@
-%p.word
+%li.word
 	=link_to word.content, word
-	=link_to "Edit", edit_word_path(word)
-	=link_to "Delete", word, method: :delete, data: { confirm: 'Are you sure?' }
+	=link_to raw('<i class="icon-pencil"></i>'), edit_word_path(word), class: "no_u"
+	=link_to raw('<i class="icon-trash"></i>'), word, method: :delete, data: { confirm: 'Are you sure?' }, class: "no_u"

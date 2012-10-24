@@ -1,3 +1,37 @@
 // Place all the styles related to the words controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$grey: #B3B3B3;
+
+footer{ clear: both; }
+.center{ text-align: center; }
+.right{ text-align: right; }
+.left{ text-align: left;}
+
+ul.words{
+	margin: 0px;
+	padding: 0px;
+	li.word{
+		color: $grey;
+		background: white;
+		font-size: 18px;
+		padding: 0.3em;
+		border-radius: 6px;
+		font-family: serif;
+		display: inline;
+		margin-right: 0.2em;
+		a{
+			color: inherit;
+			background: inherit;
+		}
+	}
+
+	li.word:hover{
+		background: $grey;
+		color: white;
+	}
+}
+
+a.no_u{ text-decoation: none; } // no underline
+a.no_u :hover{ text-decoration: none; }
