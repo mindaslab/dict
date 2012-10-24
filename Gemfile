@@ -30,6 +30,8 @@ gem "twitter-bootstrap-rails"
 
 gem 'devise'
 
+gem 'kaminari'
+
 
 
 # To use ActiveModel has_secure_password
