@@ -1,0 +1,13 @@
+<li class="dropdown" id="fat-menu">
+<a data-toggle="dropdown" class="dropdown-toggle" role="button" id="drop3" href="#">
+=current_user.email
+<b class="caret"></b></a>
+<ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+<li><a href="#" tabindex="-1">Profile</a></li>
+<li>
+= link_to "Signout", destroy_user_session_path, method: :delete
+</li>
+<li class="divider"></li>
+<li><a href="#" tabindex="-1">Help</a></li>
+</ul>
+</li>

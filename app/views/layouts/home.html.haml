@@ -32,7 +32,10 @@
               %li= link_to "Search", search_words_path
               %li= link_to "New Word", new_word_path
             %ul.nav.pull-right
-              =render partial: "home/you_menu"
+              -unless user_signed_in?
+                =render partial: "home/you_menu"
+              -else
+                =render partial: "home/user_menu"
               
               
 
