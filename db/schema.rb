@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023040835) do
+ActiveRecord::Schema.define(:version => 20121024170351) do
 
   create_table "meanings", :force => true do |t|
     t.text     "content"
     t.integer  "word_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "user_id",    :default => 0, :null => false
   end
 
+  add_index "meanings", ["user_id"], :name => "index_meanings_on_user_id"
   add_index "meanings", ["word_id"], :name => "index_meanings_on_word_id"
 
   create_table "users", :force => true do |t|
@@ -53,8 +55,11 @@ ActiveRecord::Schema.define(:version => 20121023040835) do
 
   create_table "words", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "user_id",    :default => 0, :null => false
   end
+
+  add_index "words", ["user_id"], :name => "index_words_on_user_id"
 
 end

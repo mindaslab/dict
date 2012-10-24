@@ -1,6 +1,11 @@
 class MeaningsController < ApplicationController
   # GET /meanings
   # GET /meanings.json
+  
+  layout 'home'
+  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :user_must_own_the_meaning, only: [:edit, :update, :destroy]
+  
   def index
     @meanings = Meaning.all
 
@@ -41,6 +46,7 @@ class MeaningsController < ApplicationController
   # POST /meanings.json
   def create
     @meaning = Meaning.new(params[:meaning])
+    @meaning.user = current_user
 
     respond_to do |format|
       if @meaning.save
@@ -79,5 +85,12 @@ class MeaningsController < ApplicationController
       format.html { redirect_to meanings_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def user_must_own_the_meaning
+	@meaning = Meaning.find(params[:id])
+	redirect_to words_path, notice: "You must have created the meaning to edit it." unless @meaning.user == current_user
   end
 end

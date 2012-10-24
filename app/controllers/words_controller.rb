@@ -3,6 +3,8 @@ class WordsController < ApplicationController
   # GET /words.json
   
   layout 'home'
+  before_filter :authenticate_user!, except: [:index, :show, :search]
+  before_filter :user_must_own_the_word, only: [:edit, :update, :destroy]
   
   def index
     @words = Word.all
@@ -44,6 +46,7 @@ class WordsController < ApplicationController
   # POST /words.json
   def create
     @word = Word.new(params[:word])
+    @word.user = current_user
 
     respond_to do |format|
       if @word.save
@@ -82,5 +85,12 @@ class WordsController < ApplicationController
       format.html { redirect_to words_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def user_must_own_the_word
+	@word = Word.find(params[:id])
+	redirect_to words_path, notice: "You must have created the word to edit it." unless @word.user == current_user
   end
 end
