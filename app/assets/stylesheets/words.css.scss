@@ -35,3 +35,18 @@ ul.words{
 
 a.no_u{ text-decoation: none; } // no underline
 a.no_u :hover{ text-decoration: none; }
+
+div.small_vertical_gap{
+	clear: both;
+	height: 1em;
+}
+
+div.big_vertical_gap{
+	clear: both;
+	height: 5em;
+}
+
+div.medium_vertical_gap{
+	clear: both;
+	height: 3em;
+}

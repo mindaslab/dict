@@ -1,6 +1,6 @@
 .center
 	=image_tag 'logo_english.png'
-
-	=form_tag '#' do
-		=text_field_tag :q
+	.medium_vertical_gap
+	=form_tag('#', class:"form-search") do
+		=text_field_tag :q, nil, class: "input-xlarge", placeholder: "Type to search"
 		=submit_tag 'Search', class: "btn"
