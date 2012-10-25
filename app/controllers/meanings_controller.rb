@@ -39,7 +39,6 @@ class MeaningsController < ApplicationController
 
   # GET /meanings/1/edit
   def edit
-    @meaning = Meaning.find(params[:id])
   end
 
   # POST /meanings
@@ -62,7 +61,6 @@ class MeaningsController < ApplicationController
   # PUT /meanings/1
   # PUT /meanings/1.json
   def update
-    @meaning = Meaning.find(params[:id])
 
     respond_to do |format|
       if @meaning.update_attributes(params[:meaning])
@@ -78,7 +76,6 @@ class MeaningsController < ApplicationController
   # DELETE /meanings/1
   # DELETE /meanings/1.json
   def destroy
-    @meaning = Meaning.find(params[:id])
     @meaning.destroy
 
     respond_to do |format|
