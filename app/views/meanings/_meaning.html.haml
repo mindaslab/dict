@@ -1,1 +1,6 @@
-.meaning= meaning.content
+.meaning
+	%p=meaning.content
+	.small_vertical_gap
+	-if meaning.user == current_user
+		=link_to raw("<i class='icon-pencil'></i>"), edit_meaning_path(meaning), title: "Edit"
+		=link_to raw("<i class='icon-trash'></i>"), meaning, title: "Delete", method: :delete, confirm: "Are 	you sure ou want to delete?"

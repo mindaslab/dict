@@ -1,3 +1,15 @@
 // Place all the styles related to the meanings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.meaning{
+	background: white;
+	padding: 0.5em;
+	border-bottom: 2px solid black;
+	margin-bottom: 0.7em;
+	p{
+		width: 80%;
+		margin: 0px;
+		padding: 0px;
+	}
+}

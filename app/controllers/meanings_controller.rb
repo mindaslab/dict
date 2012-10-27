@@ -30,7 +30,7 @@ class MeaningsController < ApplicationController
   # GET /meanings/new.json
   def new
     @meaning = Meaning.new
-	@word = Word.find(params[:word_id])
+	  @word = Word.find(params[:word_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @meaning }
@@ -39,6 +39,7 @@ class MeaningsController < ApplicationController
 
   # GET /meanings/1/edit
   def edit
+    @word = @meaning.word
   end
 
   # POST /meanings
@@ -87,7 +88,7 @@ class MeaningsController < ApplicationController
   private
   
   def user_must_own_the_meaning
-	@meaning = Meaning.find(params[:id])
-	redirect_to words_path, notice: "You must have created the meaning to edit it." unless @meaning.user == current_user
+	   @meaning = Meaning.find(params[:id])
+	   redirect_to words_path, notice: "You must have created the meaning to edit it." unless @meaning.user == current_user
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024170351) do
+ActiveRecord::Schema.define(:version => 20121025042324) do
 
   create_table "meanings", :force => true do |t|
     t.text     "content"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20121024170351) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "user_id",    :default => 0, :null => false
+    t.integer  "up_votes",   :default => 0, :null => false
+    t.integer  "down_votes", :default => 0, :null => false
   end
 
   add_index "meanings", ["user_id"], :name => "index_meanings_on_user_id"
@@ -52,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20121024170351) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.boolean  "up"
+    t.integer  "user_id"
+    t.integer  "meaning_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["meaning_id"], :name => "index_votes_on_meaning_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
   create_table "words", :force => true do |t|
     t.string   "content"
