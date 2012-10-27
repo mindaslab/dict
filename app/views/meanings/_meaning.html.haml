@@ -1,6 +1,13 @@
-.meaning
-	%p=meaning.content
-	.small_vertical_gap
-	-if meaning.user == current_user
-		=link_to raw("<i class='icon-pencil'></i>"), edit_meaning_path(meaning), title: "Edit"
-		=link_to raw("<i class='icon-trash'></i>"), meaning, title: "Delete", method: :delete, confirm: "Are 	you sure ou want to delete?"
+.row-fluid.meaning
+	.span10
+		%p=meaning.content
+		-if meaning.user == current_user
+			=link_to raw("<i class='icon-pencil'></i>"), edit_meaning_path(meaning), title: "Edit"
+			=link_to raw("<i class='icon-trash'></i>"), meaning, title: "Delete", method: :delete, confirm: "Are 	you sure ou want to delete?"
+	.span2.right
+		.vote_up.vote
+			=link_to raw("<i class='icon-chevron-up icon-white'></i>"), "#", class: "btn btn-mini btn-primary", title: "Right Meaning"
+		.vote_none.vote
+			=link_to raw("<i class='icon-refresh'></i>"), "#", class: "btn btn-mini", title: "Revove Vote"
+		.vote_down.vote
+			=link_to raw("<i class='icon-chevron-down'></i>"), "#", class: "btn btn-mini", title: "Wrong Meaning"
