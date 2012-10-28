@@ -1,12 +1,18 @@
 Dict::Application.routes.draw do
   devise_for :users
 
-  resources :meanings
+  resources :meanings do
+      member do
+        put 'vote_up'
+        put 'vote_down'
+        put 'remove_vote'
+      end
+  end
 
   resources :words do
-	collection do
-		get 'search'
-	end
+	   collection do
+		    get 'search'
+	   end
   end
 
   # The priority is based upon order of creation:
