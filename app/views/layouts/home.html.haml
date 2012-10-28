@@ -42,7 +42,10 @@
     .container-fluid
       .span8.offset2
         .small_vertical_gap
-        .notice=notice
+        -if notice
+          .alert.fade.in
+            =link_to 'x', '#', data: { dismiss: "alert"}, class: "close"
+            =notice
         .small_vertical_gap
         = yield
     

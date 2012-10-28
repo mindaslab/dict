@@ -7,7 +7,7 @@ class WordsController < ApplicationController
   before_filter :user_must_own_the_word, only: [:edit, :update, :destroy]
   
   def index
-    @words = Word.all
+    @words = Word.order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,11 +83,16 @@ class WordsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def suggest
+    @words = Word.where("content like ?", "#{params[:q].downcase}%").limit(50)
+    render layout: false
+  end
   
   private
   
   def user_must_own_the_word
-	@word = Word.find(params[:id])
-	redirect_to words_path, notice: "You must have created the word to edit it." unless @word.user == current_user
+	   @word = Word.find(params[:id])
+	   redirect_to words_path, notice: "You must have created the word to edit it." unless @word.user == current_user
   end
 end

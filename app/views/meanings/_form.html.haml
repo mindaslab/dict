@@ -9,9 +9,8 @@
           %li= msg
 
   .field
-    = f.label :content
-    = f.text_area :content
+    = f.text_area :content, class: "meaning"
  
     = hidden_field_tag "meaning[word_id]", @word.id
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-primary"

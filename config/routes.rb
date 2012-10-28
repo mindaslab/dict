@@ -12,6 +12,7 @@ Dict::Application.routes.draw do
   resources :words do
 	   collection do
 		    get 'search'
+        get 'suggest'
 	   end
   end
 
